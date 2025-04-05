@@ -15,6 +15,13 @@
       "when": 1743541801107,
       "tag": "0001_curvy_wonder_man",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1743853272528,
+      "tag": "0002_aspiring_jack_power",
+      "breakpoints": true
     }
   ]
 }

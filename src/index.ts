@@ -2,6 +2,7 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { bearerAuth } from "hono/bearer-auth";
 import { queryApp } from "./routes/query.js";
+import { viewsApp } from "./routes/views.js";
 
 const app = new Hono();
 
@@ -68,6 +69,7 @@ app.delete("/api/missioni", (c) => {
 });
 
 app.route("/api/query", queryApp);
+app.route("/api/views", viewsApp);
 
 serve(
   {
