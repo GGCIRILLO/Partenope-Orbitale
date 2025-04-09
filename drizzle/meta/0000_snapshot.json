@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "d3d42099-543e-4ee8-8a12-f8042df6ace7",
+  "id": "3cdacb4b-52a5-48c1-abb7-daefb2b0c0b5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "ANOMALIE": {
@@ -43,8 +43,30 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
-      "foreignKeys": {},
+      "indexes": {
+        "IDX_ANOMALIE_LIVELLO": {
+          "name": "IDX_ANOMALIE_LIVELLO",
+          "columns": [
+            "Livello"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "ANOMALIE_SensoreID_SENSORI_ID_fk": {
+          "name": "ANOMALIE_SensoreID_SENSORI_ID_fk",
+          "tableFrom": "ANOMALIE",
+          "tableTo": "SENSORI",
+          "columnsFrom": [
+            "SensoreID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "checkConstraints": {}
@@ -68,8 +90,43 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "foreignKeys": {
+        "COINVOLGIMENTI_InterventoID_INTERVENTI_ID_fk": {
+          "name": "COINVOLGIMENTI_InterventoID_INTERVENTI_ID_fk",
+          "tableFrom": "COINVOLGIMENTI",
+          "tableTo": "INTERVENTI",
+          "columnsFrom": [
+            "InterventoID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "COINVOLGIMENTI_MembroID_MEMBRI_EQUIPAGGIO_ID_fk": {
+          "name": "COINVOLGIMENTI_MembroID_MEMBRI_EQUIPAGGIO_ID_fk",
+          "tableFrom": "COINVOLGIMENTI",
+          "tableTo": "MEMBRI_EQUIPAGGIO",
+          "columnsFrom": [
+            "MembroID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "COINVOLGIMENTI_InterventoID_MembroID_pk": {
+          "columns": [
+            "InterventoID",
+            "MembroID"
+          ],
+          "name": "COINVOLGIMENTI_InterventoID_MembroID_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
@@ -106,8 +163,44 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "foreignKeys": {
+        "INTERAZIONI_TECNICHE_MembroID_MEMBRI_EQUIPAGGIO_ID_fk": {
+          "name": "INTERAZIONI_TECNICHE_MembroID_MEMBRI_EQUIPAGGIO_ID_fk",
+          "tableFrom": "INTERAZIONI_TECNICHE",
+          "tableTo": "MEMBRI_EQUIPAGGIO",
+          "columnsFrom": [
+            "MembroID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "INTERAZIONI_TECNICHE_SensoreID_SENSORI_ID_fk": {
+          "name": "INTERAZIONI_TECNICHE_SensoreID_SENSORI_ID_fk",
+          "tableFrom": "INTERAZIONI_TECNICHE",
+          "tableTo": "SENSORI",
+          "columnsFrom": [
+            "SensoreID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "INTERAZIONI_TECNICHE_MembroID_SensoreID_Timestamp_pk": {
+          "columns": [
+            "MembroID",
+            "SensoreID",
+            "Timestamp"
+          ],
+          "name": "INTERAZIONI_TECNICHE_MembroID_SensoreID_Timestamp_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
@@ -181,7 +274,15 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "IDX_MEMBRI_RUOLO": {
+          "name": "IDX_MEMBRI_RUOLO",
+          "columns": [
+            "Ruolo"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
@@ -226,7 +327,22 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "MISSIONI_ID_unique": {
+          "name": "MISSIONI_ID_unique",
+          "columns": [
+            "ID"
+          ],
+          "isUnique": true
+        },
+        "IDX_MISSIONI_STATO": {
+          "name": "IDX_MISSIONI_STATO",
+          "columns": [
+            "Stato"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
@@ -251,8 +367,43 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "foreignKeys": {
+        "PARTECIPAZIONI_MissioneID_MISSIONI_ID_fk": {
+          "name": "PARTECIPAZIONI_MissioneID_MISSIONI_ID_fk",
+          "tableFrom": "PARTECIPAZIONI",
+          "tableTo": "MISSIONI",
+          "columnsFrom": [
+            "MissioneID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "PARTECIPAZIONI_MembroID_MEMBRI_EQUIPAGGIO_ID_fk": {
+          "name": "PARTECIPAZIONI_MembroID_MEMBRI_EQUIPAGGIO_ID_fk",
+          "tableFrom": "PARTECIPAZIONI",
+          "tableTo": "MEMBRI_EQUIPAGGIO",
+          "columnsFrom": [
+            "MembroID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "PARTECIPAZIONI_MissioneID_MembroID_pk": {
+          "columns": [
+            "MissioneID",
+            "MembroID"
+          ],
+          "name": "PARTECIPAZIONI_MissioneID_MembroID_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
@@ -288,9 +439,65 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "indexes": {
+        "IDX_REPORT_DATA": {
+          "name": "IDX_REPORT_DATA",
+          "columns": [
+            "Data"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "REDAZIONE_MembroID_MEMBRI_EQUIPAGGIO_ID_fk": {
+          "name": "REDAZIONE_MembroID_MEMBRI_EQUIPAGGIO_ID_fk",
+          "tableFrom": "REDAZIONE",
+          "tableTo": "MEMBRI_EQUIPAGGIO",
+          "columnsFrom": [
+            "MembroID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "REDAZIONE_MissioneID_MISSIONI_ID_fk": {
+          "name": "REDAZIONE_MissioneID_MISSIONI_ID_fk",
+          "tableFrom": "REDAZIONE",
+          "tableTo": "MISSIONI",
+          "columnsFrom": [
+            "MissioneID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "REDAZIONE_ReportID_REPORT_ID_fk": {
+          "name": "REDAZIONE_ReportID_REPORT_ID_fk",
+          "tableFrom": "REDAZIONE",
+          "tableTo": "REPORT",
+          "columnsFrom": [
+            "ReportID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "REDAZIONE_MembroID_MissioneID_pk": {
+          "columns": [
+            "MembroID",
+            "MissioneID"
+          ],
+          "name": "REDAZIONE_MembroID_MissioneID_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
@@ -350,8 +557,31 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
-      "foreignKeys": {},
+      "indexes": {
+        "IDX_RILEVAZIONI_SENSORI_TIMESTAMP": {
+          "name": "IDX_RILEVAZIONI_SENSORI_TIMESTAMP",
+          "columns": [
+            "SensoreID",
+            "Timestamp"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "RILEVAZIONI_SensoreID_SENSORI_ID_fk": {
+          "name": "RILEVAZIONI_SensoreID_SENSORI_ID_fk",
+          "tableFrom": "RILEVAZIONI",
+          "tableTo": "SENSORI",
+          "columnsFrom": [
+            "SensoreID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "checkConstraints": {}
@@ -364,7 +594,7 @@
           "type": "integer",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": true
+          "autoincrement": false
         },
         "AnomaliaID": {
           "name": "AnomaliaID",
@@ -389,7 +619,34 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "RISOLUZIONI_InterventoID_INTERVENTI_ID_fk": {
+          "name": "RISOLUZIONI_InterventoID_INTERVENTI_ID_fk",
+          "tableFrom": "RISOLUZIONI",
+          "tableTo": "INTERVENTI",
+          "columnsFrom": [
+            "InterventoID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "RISOLUZIONI_AnomaliaID_ANOMALIE_ID_fk": {
+          "name": "RISOLUZIONI_AnomaliaID_ANOMALIE_ID_fk",
+          "tableFrom": "RISOLUZIONI",
+          "tableTo": "ANOMALIE",
+          "columnsFrom": [
+            "AnomaliaID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "checkConstraints": {}
@@ -478,7 +735,15 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "IDX_SENSORI_TIPO": {
+          "name": "IDX_SENSORI_TIPO",
+          "columns": [
+            "Tipo"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
@@ -503,8 +768,43 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "foreignKeys": {
+        "UTILIZZO_ROBOT_MissioneID_MISSIONI_ID_fk": {
+          "name": "UTILIZZO_ROBOT_MissioneID_MISSIONI_ID_fk",
+          "tableFrom": "UTILIZZO_ROBOT",
+          "tableTo": "MISSIONI",
+          "columnsFrom": [
+            "MissioneID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "UTILIZZO_ROBOT_RobotID_ROBOT_ID_fk": {
+          "name": "UTILIZZO_ROBOT_RobotID_ROBOT_ID_fk",
+          "tableFrom": "UTILIZZO_ROBOT",
+          "tableTo": "ROBOT",
+          "columnsFrom": [
+            "RobotID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "UTILIZZO_ROBOT_MissioneID_RobotID_pk": {
+          "columns": [
+            "MissioneID",
+            "RobotID"
+          ],
+          "name": "UTILIZZO_ROBOT_MissioneID_RobotID_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
@@ -527,8 +827,43 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "foreignKeys": {
+        "UTILIZZO_SENSORI_MissioneID_MISSIONI_ID_fk": {
+          "name": "UTILIZZO_SENSORI_MissioneID_MISSIONI_ID_fk",
+          "tableFrom": "UTILIZZO_SENSORI",
+          "tableTo": "MISSIONI",
+          "columnsFrom": [
+            "MissioneID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "UTILIZZO_SENSORI_SensoreID_SENSORI_ID_fk": {
+          "name": "UTILIZZO_SENSORI_SensoreID_SENSORI_ID_fk",
+          "tableFrom": "UTILIZZO_SENSORI",
+          "tableTo": "SENSORI",
+          "columnsFrom": [
+            "SensoreID"
+          ],
+          "columnsTo": [
+            "ID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "UTILIZZO_SENSORI_MissioneID_SensoreID_pk": {
+          "columns": [
+            "MissioneID",
+            "SensoreID"
+          ],
+          "name": "UTILIZZO_SENSORI_MissioneID_SensoreID_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     }

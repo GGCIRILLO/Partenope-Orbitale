@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "79a3070e-dd70-4f22-b264-4772f485e65e",
-  "prevId": "d3d42099-543e-4ee8-8a12-f8042df6ace7",
+  "id": "c02730d5-4168-4f87-b5b0-83d794044fd0",
+  "prevId": "3cdacb4b-52a5-48c1-abb7-daefb2b0c0b5",
   "tables": {
     "ANOMALIE": {
       "name": "ANOMALIE",
@@ -43,7 +43,15 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "IDX_ANOMALIE_LIVELLO": {
+          "name": "IDX_ANOMALIE_LIVELLO",
+          "columns": [
+            "Livello"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
         "ANOMALIE_SensoreID_SENSORI_ID_fk": {
           "name": "ANOMALIE_SensoreID_SENSORI_ID_fk",
@@ -110,7 +118,15 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "COINVOLGIMENTI_InterventoID_MembroID_pk": {
+          "columns": [
+            "InterventoID",
+            "MembroID"
+          ],
+          "name": "COINVOLGIMENTI_InterventoID_MembroID_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
@@ -175,7 +191,16 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "INTERAZIONI_TECNICHE_MembroID_SensoreID_Timestamp_pk": {
+          "columns": [
+            "MembroID",
+            "SensoreID",
+            "Timestamp"
+          ],
+          "name": "INTERAZIONI_TECNICHE_MembroID_SensoreID_Timestamp_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
@@ -249,7 +274,15 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "IDX_MEMBRI_RUOLO": {
+          "name": "IDX_MEMBRI_RUOLO",
+          "columns": [
+            "Ruolo"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
@@ -301,6 +334,13 @@
             "ID"
           ],
           "isUnique": true
+        },
+        "IDX_MISSIONI_STATO": {
+          "name": "IDX_MISSIONI_STATO",
+          "columns": [
+            "Stato"
+          ],
+          "isUnique": false
         }
       },
       "foreignKeys": {},
@@ -355,7 +395,15 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "PARTECIPAZIONI_MissioneID_MembroID_pk": {
+          "columns": [
+            "MissioneID",
+            "MembroID"
+          ],
+          "name": "PARTECIPAZIONI_MissioneID_MembroID_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
@@ -391,7 +439,15 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "IDX_REPORT_DATA": {
+          "name": "IDX_REPORT_DATA",
+          "columns": [
+            "Data"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
         "REDAZIONE_MembroID_MEMBRI_EQUIPAGGIO_ID_fk": {
           "name": "REDAZIONE_MembroID_MEMBRI_EQUIPAGGIO_ID_fk",
@@ -433,7 +489,15 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "REDAZIONE_MembroID_MissioneID_pk": {
+          "columns": [
+            "MembroID",
+            "MissioneID"
+          ],
+          "name": "REDAZIONE_MembroID_MissioneID_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
@@ -493,7 +557,16 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "IDX_RILEVAZIONI_SENSORI_TIMESTAMP": {
+          "name": "IDX_RILEVAZIONI_SENSORI_TIMESTAMP",
+          "columns": [
+            "SensoreID",
+            "Timestamp"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
         "RILEVAZIONI_SensoreID_SENSORI_ID_fk": {
           "name": "RILEVAZIONI_SensoreID_SENSORI_ID_fk",
@@ -519,8 +592,8 @@
         "InterventoID": {
           "name": "InterventoID",
           "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
+          "primaryKey": true,
+          "notNull": true,
           "autoincrement": false
         },
         "AnomaliaID": {
@@ -662,7 +735,15 @@
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "IDX_SENSORI_TIPO": {
+          "name": "IDX_SENSORI_TIPO",
+          "columns": [
+            "Tipo"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
@@ -715,7 +796,15 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "UTILIZZO_ROBOT_MissioneID_RobotID_pk": {
+          "columns": [
+            "MissioneID",
+            "RobotID"
+          ],
+          "name": "UTILIZZO_ROBOT_MissioneID_RobotID_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     },
@@ -766,12 +855,196 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "UTILIZZO_SENSORI_MissioneID_SensoreID_pk": {
+          "columns": [
+            "MissioneID",
+            "SensoreID"
+          ],
+          "name": "UTILIZZO_SENSORI_MissioneID_SensoreID_pk"
+        }
+      },
       "uniqueConstraints": {},
       "checkConstraints": {}
     }
   },
-  "views": {},
+  "views": {
+    "ANDAMENTO_MISSIONI": {
+      "columns": {
+        "ID": {
+          "name": "ID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "Obiettivo": {
+          "name": "Obiettivo",
+          "type": "text(100)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "Stato": {
+          "name": "Stato",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "name": "ANDAMENTO_MISSIONI",
+      "isExisting": false,
+      "definition": "select \"MISSIONI\".\"ID\", \"MISSIONI\".\"Obiettivo\", \"MISSIONI\".\"Stato\", COUNT(\"ANOMALIE\".\"ID\") as \"totaleAnomalie\" from \"MISSIONI\" left join \"ANOMALIE\" on \"MISSIONI\".\"ID\" = \"ANOMALIE\".\"SensoreID\" group by \"MISSIONI\".\"ID\", \"MISSIONI\".\"Obiettivo\", \"MISSIONI\".\"Stato\" order by totaleAnomalie desc"
+    },
+    "CALENDARIO_INTERVENTI": {
+      "columns": {
+        "ID": {
+          "name": "ID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "Descrizione": {
+          "name": "Descrizione",
+          "type": "text(100)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "DataEsecuzione": {
+          "name": "DataEsecuzione",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "Livello": {
+          "name": "Livello",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "SensoreID": {
+          "name": "SensoreID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "name": "CALENDARIO_INTERVENTI",
+      "isExisting": false,
+      "definition": "select \"INTERVENTI\".\"ID\", \"INTERVENTI\".\"Descrizione\", \"INTERVENTI\".\"DataEsecuzione\", \"ANOMALIE\".\"ID\", \"ANOMALIE\".\"Livello\", \"ANOMALIE\".\"SensoreID\" from \"INTERVENTI\" left join \"RISOLUZIONI\" on \"INTERVENTI\".\"ID\" = \"RISOLUZIONI\".\"InterventoID\" left join \"ANOMALIE\" on \"RISOLUZIONI\".\"AnomaliaID\" = \"ANOMALIE\".\"ID\" order by \"INTERVENTI\".\"DataEsecuzione\" asc"
+    },
+    "EROI_DELLA_LUNA": {
+      "columns": {
+        "ID": {
+          "name": "ID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "Nome": {
+          "name": "Nome",
+          "type": "text(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "Cognome": {
+          "name": "Cognome",
+          "type": "text(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "name": "EROI_DELLA_LUNA",
+      "isExisting": false,
+      "definition": "select \"MEMBRI_EQUIPAGGIO\".\"ID\", \"MEMBRI_EQUIPAGGIO\".\"Nome\", \"MEMBRI_EQUIPAGGIO\".\"Cognome\", COUNT(DISTINCT \"PARTECIPAZIONI\".\"MissioneID\") as \"missioniPartecipate\", COUNT(DISTINCT \"COINVOLGIMENTI\".\"InterventoID\") as \"interventiEffettuati\" from \"MEMBRI_EQUIPAGGIO\" left join \"PARTECIPAZIONI\" on \"MEMBRI_EQUIPAGGIO\".\"ID\" = \"PARTECIPAZIONI\".\"MembroID\" left join \"COINVOLGIMENTI\" on \"MEMBRI_EQUIPAGGIO\".\"ID\" = \"COINVOLGIMENTI\".\"MembroID\" group by \"MEMBRI_EQUIPAGGIO\".\"ID\", \"MEMBRI_EQUIPAGGIO\".\"Nome\", \"MEMBRI_EQUIPAGGIO\".\"Cognome\" order by interventiEffettuati desc"
+    },
+    "REDAZIONE_RECENTE": {
+      "columns": {
+        "ID": {
+          "name": "ID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "Valutazione": {
+          "name": "Valutazione",
+          "type": "text(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "Data": {
+          "name": "Data",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "Obiettivo": {
+          "name": "Obiettivo",
+          "type": "text(100)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "name": "REDAZIONE_RECENTE",
+      "isExisting": false,
+      "definition": "select \"REPORT\".\"ID\", \"REPORT\".\"Valutazione\", \"REDAZIONE\".\"Data\", \"MISSIONI\".\"Obiettivo\", \"MEMBRI_EQUIPAGGIO\".\"Nome\" || ' ' || \"MEMBRI_EQUIPAGGIO\".\"Cognome\" as \"autore\" from \"REPORT\" inner join \"REDAZIONE\" on \"REPORT\".\"ID\" = \"REDAZIONE\".\"ReportID\" inner join \"MISSIONI\" on \"REDAZIONE\".\"MissioneID\" = \"MISSIONI\".\"ID\" inner join \"MEMBRI_EQUIPAGGIO\" on \"REDAZIONE\".\"MembroID\" = \"MEMBRI_EQUIPAGGIO\".\"ID\" order by \"REDAZIONE\".\"Data\" desc limit 10"
+    },
+    "SENSORI_SOTTO_PRESSIONE": {
+      "columns": {
+        "ID": {
+          "name": "ID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "Tipo": {
+          "name": "Tipo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "name": "SENSORI_SOTTO_PRESSIONE",
+      "isExisting": false,
+      "definition": "select \"SENSORI\".\"ID\", \"SENSORI\".\"Tipo\", COUNT(\"ANOMALIE\".\"ID\") as \"numeroAnomalie\" from \"SENSORI\" left join \"ANOMALIE\" on \"SENSORI\".\"ID\" = \"ANOMALIE\".\"SensoreID\" group by \"SENSORI\".\"ID\", \"SENSORI\".\"Tipo\" order by numeroAnomalie desc"
+    },
+    "STATISTICHE_RILEVAZIONI": {
+      "columns": {
+        "ID": {
+          "name": "ID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "Tipo": {
+          "name": "Tipo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "name": "STATISTICHE_RILEVAZIONI",
+      "isExisting": false,
+      "definition": "select \"SENSORI\".\"ID\", \"SENSORI\".\"Tipo\", ROUND(AVG(\"RILEVAZIONI\".\"Valore\"), 2) as \"mediaValore\", MAX(\"RILEVAZIONI\".\"Valore\") as \"valoreMassimo\", MIN(\"RILEVAZIONI\".\"Valore\") as \"valoreMinimo\" from \"SENSORI\" inner join \"RILEVAZIONI\" on \"SENSORI\".\"ID\" = \"RILEVAZIONI\".\"SensoreID\" group by \"SENSORI\".\"ID\", \"SENSORI\".\"Tipo\" order by \"SENSORI\".\"Tipo\", mediaValore desc"
+    }
+  },
   "enums": {},
   "_meta": {
     "schemas": {},
