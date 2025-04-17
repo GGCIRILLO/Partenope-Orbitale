@@ -19,6 +19,11 @@ Il sistema è stato arricchito con componenti extra non richiesti dalla traccia,
 - ✅ **Viste** per analisi aggregate e dashboard
 - ✅ **Query avanzate** con `HAVING`, `NOT EXISTS`, subquery e funzioni di aggregazione
 
+Percorso: 
+Tabelle: `SeedingPartenopeOrbitale/table.sql`
+Operazioni (Query, Procedures, etc): `SeedingPartenopeOrbitale/operazioni.sql`
+
+
 ## 🌐 Web API + ORM
 
 Come estensione del progetto (non richiesta dalla traccia), è stata sviluppata una **Web API RESTful** in TypeScript utilizzando:
@@ -43,17 +48,18 @@ Lo script produce un file `.sql` contenente solo comandi `INSERT INTO`, pronto p
 > Lo script è pensato per essere facilmente estendibile o adattabile ad altri DBMS.
 
 Percorso:  
-`/seed/seed_partenope_orbitale_generator.py`
+`/SeedingPartenopeOrbitale/seed_partenope_orbitale.py`
+`/SeedingPartenopeOrbitale/seed_partenope_orbitale_2.py`
 
 ## 🗃️ Tecnologie utilizzate
 
-| Componente       | Tecnologia         |
-|------------------|--------------------|
+| Componente       | Tecnologia          |
+|------------------|---------------------|
 | Database         | Oracle SQL / SQLite |
-| ORM              | Drizzle ORM        |
-| API REST         | TypeScript         |
-| Interfaccia GUI  | Oracle APEX        |
-| Script Seeding   | Python             |
+| ORM              | Drizzle ORM         |
+| API REST         | TypeScript          |
+| Interfaccia GUI  | Oracle APEX         |
+| Script Seeding   | Python              |
 
 ## ✨ Autori
 
