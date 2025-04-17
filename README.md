@@ -44,13 +44,12 @@ Lo script produce un file `.sql` contenente solo comandi `INSERT INTO`, pronto p
 - ✅ Dati coerenti e simulati: missioni, sensori, robot, anomalie, rilevazioni, interventi...
 - 🔁 Quantità configurabili tramite variabili globali
 - 🧠 Valori realistici con array predefiniti per ruoli, obiettivi, anomalie, valutazioni
-- 📁 Output: `seed_partenope_orbitale.sql`
+- 📁 Output: `seed_partenope_orbitale.sql`, `seed_partenope_orbitale_2.sql`
 
 > Lo script è pensato per essere facilmente estendibile o adattabile ad altri DBMS.
 
-Percorso:  
-`/SeedingPartenopeOrbitale/seed_partenope_orbitale.py`
-`/SeedingPartenopeOrbitale/seed_partenope_orbitale_2.py`
+Percorso:  `/SeedingPartenopeOrbitale/main.py`
+
 
 ## 🗃️ Tecnologie utilizzate
 
