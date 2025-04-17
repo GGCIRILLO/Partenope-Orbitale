@@ -21,6 +21,7 @@ Il sistema è stato arricchito con componenti extra non richiesti dalla traccia,
 
 Percorso: 
 Tabelle: `SeedingPartenopeOrbitale/table.sql`
+
 Operazioni (Query, Procedures, etc): `SeedingPartenopeOrbitale/operazioni.sql`
 
 
